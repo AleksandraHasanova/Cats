@@ -17,10 +17,14 @@ def load_image(url):
         print(f'Ошибка: {e}')
         return None
 
-def update_img():
+def open_new_window():
     img = load_image(url)
-
     if img:
+        img_window = Toplevel(window)
+        img_window.title('Картинка с котиком')
+        img_window.geometry('600x480')
+        label = Label(img_window)
+        label.pack()
         label.config(image=img)
         label.image = img
 
@@ -29,22 +33,18 @@ def quit():
 
 window = Tk()
 window.title('Cats')
-window.geometry('600x520')
+window.geometry('200x100')
 
 menubar = Menu(window)
 window.config(menu=menubar)
 file_menu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label='Файл', menu=file_menu)
-file_menu.add_command(label='Обновить фото', command=update_img)
+file_menu.add_command(label='Загрузить фото', command=open_new_window)
 file_menu.add_separator()
 file_menu.add_command(label='Выход', command=quit)
 
-
-label = Label()
-label.pack()
-
 url = 'https://cataas.com/cat'
 
-update_img()
+open_new_window()
 
 window.mainloop()
