@@ -24,15 +24,24 @@ def update_img():
         label.config(image=img)
         label.image = img
 
+def quit():
+    window.destroy()
+
 window = Tk()
 window.title('Cats')
 window.geometry('600x520')
 
+menubar = Menu(window)
+window.config(menu=menubar)
+file_menu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label='Файл', menu=file_menu)
+file_menu.add_command(label='Обновить фото', command=update_img)
+file_menu.add_separator()
+file_menu.add_command(label='Выход', command=quit)
+
+
 label = Label()
 label.pack()
-
-update_button = Button(text='Обновить изображение', command=update_img)
-update_button.pack()
 
 url = 'https://cataas.com/cat'
 
