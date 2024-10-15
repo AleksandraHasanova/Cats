@@ -5,7 +5,7 @@ import requests
 from io import BytesIO
 
 
-allowed_tags = ['sleep', 'jump', 'fight', 'black', 'white', 'bengal', 'siamese', 'cute', 'red']
+allowed_tags = ['sleep', 'jump', 'fight', 'black', 'white', 'bengal', 'siamese', 'cute', 'red','snow','heart']
 
 def load_image(url):
     try:
@@ -27,6 +27,7 @@ def open_new_window():
         img_window = Toplevel(window)
         img_window.title('Картинка с котиком')
         img_window.geometry('600x480')
+        img_window.iconbitmap('cat_icon.ico')
         label = Label(img_window)
         label.pack()
         label.config(image=img)
@@ -38,6 +39,7 @@ def exit():
 window = Tk()
 window.title('Cats')
 window.geometry('200x150')
+window.iconbitmap('cat_icon.ico')
 
 menubar = Menu(window)
 window.config(menu=menubar)
